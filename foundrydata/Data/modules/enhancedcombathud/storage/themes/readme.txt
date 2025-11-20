@@ -1,1 +1,0 @@
-This folder contains custom themes, you can delete a theme by removing it from this folder
