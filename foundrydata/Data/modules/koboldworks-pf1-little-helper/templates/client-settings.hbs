@@ -1,0 +1,66 @@
+<form autocomplete='off' class='main-content'>
+	<header>
+	</header>
+
+	<p class='help'>Options with reddish background and crown are only available to GM.</p>
+
+	<div class='search'>
+		<input class='search-input' type='search' placeholder='Search...'>
+	</div>
+
+	<section class='content'>
+	{{#each sorted}}
+		<details class='group' open>
+			<summary class='title'>{{label}}</summary>
+			<ul>
+				{{#each group}}
+				<li class='setting{{#if disabled}} disabled{{/if}}{{#if gmOnly}} gm{{/if}}' data-setting-id='{{setting}}'>
+					<label>
+						<input type='checkbox' data-dtype='Boolean' name='{{setting}}.enabled' {{checked (and enabled (not disabled))}} {{#if disabled}}disabled{{/if}}>
+						<span class='setting-name'>{{label}}</span>
+						{{#if disabled}}
+							<span class="requirements">
+							{{#if gmOnly}}{{#unless @root.isGM}} (GM-only){{/unless}}{{/if}}
+							{{#if requirements}}
+								{{#if requirements.module}} (module missing/inactive){{/if}}
+								{{#if requirements.system}} (need system version: {{requirements.system}}){{/if}}
+								{{#if requirements.system}} (need Foundry version: {{requirements.core}}){{/if}}
+							{{/if}}
+							</span>
+							{{#if conflict}}
+								<span class="conflicts">
+								{{#with conflict.details}}
+								(conflict(s):
+								{{#if system.active}}PF1 {{system.version.threshold}}{{/if}}
+								{{#if core.active}}{{#if system.active}} & {{/if}}Foundry {{core.version.threshold}}{{/if}}
+								{{#if module.active}}
+									{{#if (or system.active core.active)}} & {{/if}}
+									<i>{{module.cause}}</i> module(s)
+								{{/if}})
+								{{/with}}
+								</span>
+							{{/if}}
+						{{/if}}
+					</label>
+					{{#if gmOnly}} <i class='{{@root.icons.crown.string}} gm-only' data-tooltip='GM-only' data-tooltip-direction='UP'></i>{{/if}}
+					<p class='hint'>{{hint}}</p>
+					{{#if notification}}<p class='hint lh-notification'>{{notification}}</p>{{/if}}
+					{{#if warning}}<p class='hint lh-warning'>{{warning}}</p>{{/if}}
+					{{#if subsettings}}
+					{{~> "modules/koboldworks-pf1-little-helper/templates/subsettings.hbs" settings=subsettings parent=setting}}
+					{{/if}}
+				</li>
+				{{/each}}
+			</ul>
+		</details>
+	{{/each}}
+	</section>
+
+	<footer>
+		<div class='buttons flexrow'>
+			<button type='reset'><i class='{{@root.icons.recycle.string}}'></i> {{localize 'Reset'}}</button>
+			<button type='clear'><i class='{{@root.icons.recycle.string}}'></i> Disable All</button>
+			<button type='submit'><i class='{{@root.icons.save.string}}'></i> {{localize 'Save'}}</button>
+		</div>
+	</footer>
+</form>

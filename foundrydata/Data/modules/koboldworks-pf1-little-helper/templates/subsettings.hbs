@@ -1,0 +1,15 @@
+<fieldset class='sub-settings'>
+	<legend>Sub-settings</legend>
+	{{#each settings as |setting ssid|}}
+	<label>
+		{{#if (eq type.name 'Boolean')}}
+		<input type='checkbox' data-dtype='Boolean' name='{{../parent}}.config.{{ssid}}' {{checked value}}>
+		<span class='setting-name'>{{label}}</span>
+		{{else if (eq type.name 'Object')}}
+		<button type='button' data-callback='{{../parent}}.config.{{ssid}}'>{{callback.label}}</button>
+		<label class='setting-value'>{{display}}</label>
+		{{/if}}
+	</label>
+	{{#if hint}}<p class='hint'>{{{hint}}}</p>{{/if}}
+	{{/each}}
+</fieldset>

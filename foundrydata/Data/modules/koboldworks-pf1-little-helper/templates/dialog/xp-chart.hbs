@@ -1,0 +1,16 @@
+<ol class='xp-chart'>
+	<li class='header'>
+		<label class='level'>{{localize 'PF1.Level'}}</label>
+		<label class='total cumulative' data-tooltip='LittleHelper.XPTable.CumulativeHint'>{{localize 'LittleHelper.XPTable.Cumulative'}}</label>
+		<label class='value increment' data-tooltip='LittleHelper.XPTable.IncrementHint'>{{localize 'LittleHelper.XPTable.Increment'}}</label>
+		<label class='percent increase' data-tooltip='LittleHelper.XPTable.PercentHint'>{{localize 'LittleHelper.XPTable.Percent'}}</label>
+	</li>
+	{{#each track}}
+	<li class='level' data-level='{{level}}'>
+		<label class='level'>{{level}}</label>
+		<span class='total cumulative'>{{total}}</span>
+		<span class='value increment'>{{value}}</span>
+		<span class='percent increase'>{{#if pct}}{{numberFormat pct sign=true decimals=1}}%{{else}}—{{/if}}</span>
+	</li>
+	{{/each}}
+</ol>

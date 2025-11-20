@@ -1,0 +1,74 @@
+<div class='lil-advanced-options'>
+	<h3 class='form-header'><i class='{{@root.icons.puzzlePiece.string}}'></i> Little Helper 🦎</h3>
+
+	{{#unless libwrapper}}
+	<p class="warning">
+		<i class="fa-solid fa-triangle-exclamation"></i>
+		Please install & enable libWrapper module to allow for most of these options to function.
+	</p>
+	{{/unless}}
+
+	{{#if hasAction}}
+	<div class='flexrow'>
+		<label>
+			<input class='lil-hide-attack' type='checkbox' name='flags.lilhelper.item.hideAttacks' {{checked hideAttacks}}>
+			Hide attack rolls
+		</label>
+		<p class='hint'>Attacks can't be omitted for things that have multiple instances of damage, e.g. magic missile, this helps deal with that.</p>
+	</div>
+	{{/if}}
+
+	{{#if hasAction}}
+	<div class='flexrow'>
+		<label>
+			<input class='lil-power-attack' type='checkbox' name='flags.lilhelper.item.autoPowerAttack' {{checked autoPowerAttack}}>
+			Automatic Power Attack
+		</label>
+		<p class='hint'>Automatically enable power attack for this attack. This can still be disabled via the dialog.</p>
+	</div>
+	{{/if}}
+
+	{{#if hasAction}}
+	<div class='flexrow'>
+		<label>
+			<input class='lil-keen' type='checkbox' name='flags.lilhelper.item.keen' {{checked keen}}>
+			Keen
+		</label>
+		<p class='hint'>Extend critical threat range as per Keen property.</p>
+	</div>
+	{{/if}}
+
+	{{#if hasAction}}
+	<div class='flexrow'>
+		<label>Use dialog override</label>
+		<select class='lil-skip-dialog-override' data-dtype='Number' name='flags.lilhelper.item.skipDialog'>
+			{{selectOptions choices.skipDialog selected=skipDialog localize=true}}
+		</select>
+		<p class='hint'>Force dialog behaviour to be display or skip regardless of system settings or shift being held. Primarily intended for disabling the dialog for abilities you never want to see it for.</p>
+	</div>
+	{{/if}}
+
+	{{#if hasAction}}
+	<div class='flexrow'>
+		<label>{{localize 'LittleHelper.Options.RollModeOverride'}}</label>
+		<select class='lil-rollmode-override {{#if (eq rollmodeOverride.value 'garbage')}}bad-value{{/if}}' data-dtype='String' name='flags.lilhelper.item.rollmodeOverride'>
+		{{selectOptions choices.rollmodes selected=rollmodeOverride localize=true}}
+		</select>
+		<p class='hint'>Force roll mode to this regardless what the currently selected roll mode is. Does not override roll mode when it's forced by scripts.</p>
+	</div>
+	{{/if}}
+
+	{{#if hasAction}}
+		<div class='flexrow'>
+			<label>Roll override</label>
+			<input type='text' class='lil-roll-override' data-dtype='String' value='{{rollOverride}}' placeholder='1d20' name='flags.lilhelper.item.rollOverride'>
+			<p class='hint'>Force dice to this if not otherwise forced.</p>
+		</div>
+	{{/if}}
+
+	{{#unless hasAction}}
+	<div class='flexrow'>
+		<p class='hint'>No options available for item of this type.</p>
+	</div>
+	{{/unless}}
+</div>

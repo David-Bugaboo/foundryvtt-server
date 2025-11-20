@@ -1,0 +1,100 @@
+<div id='lil-data-sources' style='display:none;'>
+	<!-- Formulaic Attack Count -->
+	<datalist id='lil-premade-fac-list'>
+		<option data-choice='bab-iteratives' value='ceil(@attributes.bab.total / 5) - 1'>{{localize 'LittleHelper.DataSources.BABIteratives'}}</option>
+		<option data-choice='flurry-unchained' value='ceil(@attributes.bab.total / 5) - 1 + floor((@classes.monkUnchained.level + 9) / 10)'>{{localize 'LittleHelper.DataSources.FlurryUnchained'}}</option>
+		<option data-choice='flurry-chained' value='ceil(@classes.monk.level / 5) + ceil((@classes.monk.level - 7) / 7)'>{{localize 'LittleHelper.DataSources.FlurryChained'}}</option>
+	</datalist>
+
+	<!-- Formulaic Attack Bonus -->
+	<datalist id='lil-premade-fab-list'>
+		<option data-choice='bab-iteratives' value='@formulaicAttack * -5'>{{localize 'LittleHelper.DataSources.BABIteratives'}}</option>
+		<option data-choice='flurry-unchained' value='max(0, @formulaicAttack - floor((@classes.monkUnchained.level + 9) / 10)) * -5'>{{localize 'LittleHelper.DataSources.FlurryUnchained'}}</option>
+		<option data-choice='flurry-chained' value='-(floor(@formulaicAttack / 2) * 5)'>{{localize 'LittleHelper.DataSources.FlurryChained'}}</option>
+	</datalist>
+
+	<!-- Roll Dialog Options -->
+	<datalist id='lil-premade-roll-list'>
+		<option data-choice='default-check' value='1d20'>{{localize "LittleHelper.DataSources.DefaultCheck"}}</option>
+		<option data-choice='auto-crit' value='20'>{{localize "LittleHelper.DataSources.AutoCrit"}}</option>
+		<option data-choice='fortune-check' value='2d20kh'>{{localize 'LittleHelper.DataSources.Fortune'}}</option>
+		<option data-choice='misfortune-check' value='2d20kl'>{{localize 'LittleHelper.DataSources.Misfortune'}}</option>
+	</datalist>
+
+	<!-- Attack Roll Bonus -->
+	<datalist id='lil-premade-ab-list'>
+		<option data-choice='weapon-focus' value='1[{{localize 'LittleHelper.DataSources.WeaponFocus'}}]'></option>
+		<option data-choice='weapon-focus-greater' value='1[{{localize 'LittleHelper.DataSources.WeaponFocus'}}] + 1[{{localize 'LittleHelper.DataSources.WeaponFocusGt'}}]'></option>
+	</datalist>
+
+	<!-- Critical Confirmation Bonus -->
+	<datalist id='lil-premade-cf-list'>
+		<option data-choice='critical-focus' value='4[{{localize 'LittleHelper.DataSources.CriticalFocus'}}]'></option>
+	</datalist>
+
+	<!-- Attack Dialog Attack Bonus -->
+	<datalist id='lil-premade-attack-bonus-list'>
+		<option data-choice='situational' value='1[{{localize 'LittleHelper.DataSources.Situational'}}]'></option>
+		<option data-choice='situational' value='-1[{{localize 'LittleHelper.DataSources.Situational'}}]'></option>
+		<option data-choice='charge' value='2[{{localize 'LittleHelper.DataSources.Charge'}}]'></option>
+		<option data-choice='flanking' value='2[{{localize 'LittleHelper.DataSources.Flanking'}}]'></option>
+		<option data-choice='flanking-charge' value='2[{{localize 'LittleHelper.DataSources.Charge'}}] + 2[{{localize 'LittleHelper.DataSources.Flanking'}}]'></option>
+		<option data-choice='shot-into-melee' value='-4[{{localize 'LittleHelper.DataSources.ShotIntoMelee'}}]'></option>
+		<option data-choice='shot-through' value='-4[{{localize 'LittleHelper.DataSources.ShotThrough'}}]'></option>
+		<option data-choice='shot-through-into-melee' value='-8[{{localize 'LittleHelper.DataSources.ShotThroughIntoMelee'}}]'></option>
+		<option data-choice='iterative-2' value='-5[{{localize 'LittleHelper.DataSources.Iterative2nd'}}]'></option>
+		<option data-choice='iterative-3' value='-10[{{localize 'LittleHelper.DataSources.Iterative3rd'}}]'></option>
+	</datalist>
+
+	<!-- Attack Damage Formula Field -->
+	<datalist id='lil-premade-damage-formula-list'>
+		<option data-choice='size-damage' value='sizeRoll(1, 6, @size)'>{{localize 'LittleHelper.DataSources.SizeScalingDamage'}}</option>
+		<option data-choice='sneak-attack' value='ceil(@classes.rogue.level / 2)d6'>{{localize 'LittleHelper.DataSources.SneakAttack'}}</option>
+	</datalist>
+
+	<!-- Attack Dialog Roll Bonus -->
+	<datalist id='lil-premade-roll-bonus-list'>
+		<option data-choice='aid-another' value='2[{{localize 'LittleHelper.DataSources.AidAnother'}}]'></option>
+		<option data-choice='aid-another-x2' value='4[{{localize 'LittleHelper.DataSources.AidAnotherX2'}}]'></option>
+		<option data-choice='aid-another-x3' value='6[{{localize 'LittleHelper.DataSources.AidAnotherX3'}}]'></option>
+		<!--
+		<option value='1d6[Inspiration]'></option>
+		<option value='1d8[Amazing Inspiration]'></option>
+		<option value='2d6[True Inspiration]'></option>
+		<option value='2d8[True Amazing Inspiration]'></option>
+		<option value='2d8kh[True Amazing Tenacious Inspiration]'></option>
+		-->
+	</datalist>
+
+	<!-- Attack Damage Formula Damage Types -->
+	<datalist id='lil-premade-damage-type-list'>
+		{{#each registry.damageTypes}}<option value='{{this}}'></option>{{/each}}
+		<!-- {{#each extra.damageTypes}}<option value='{{this}}'></option>{{/each}} -->
+	</datalist>
+
+	<!-- DC Formula -->
+	<datalist id='lil-premade-dc-list'>
+		<option data-choice='racial-dc' value='10 + floor(@attributes.hd.total / 2) + @abilities.cha.mod'>{{localize 'LittleHelper.DataSources.RacialDCTemplate'}}</option>
+		<option data-choice='class-dc-linked' value='10 + floor(@class.level / 2) + @abilities.X.mod'>{{localize 'LittleHelper.DataSources.ClassDCTemplate'}}</option>
+		<option data-choice='class-dc-unlinked' value='10 + floor(@classes.X.level / 2) + @abilities.X.mod'>{{localize 'LittleHelper.DataSources.ClassDCTemplate'}}</option>
+	</datalist>
+
+	<!-- DC Offset -->
+	<datalist id='lil-premade-spell-dc-list'>
+		<option data-choice='spell-focus' value='1[{{localize 'LittleHelper.DataSources.SpellFocus'}}]'>{{localize 'LittleHelper.DataSources.SpellFocus'}}</option>
+		<option data-choice='spell-focus-greater' value='1[{{localize 'LittleHelper.DataSources.SpellFocus'}}] + 1[{{localize 'LittleHelper.DataSources.SpellFocusGt'}}]'>{{localize 'LittleHelper.DataSources.SpellFocusGt'}}</option>
+	</datalist>
+
+	<!-- Power Attack Multiplier -->
+	<datalist id='lil-power-attack-mult'>
+		<option data-choice='off-hand' value='0.5'>{{localize 'PF1.WeaponHoldTypeOffhand'}}</option>
+		<option data-choice='normal' value='1'>{{localize 'PF1.WeaponHoldTypeOneHanded'}}</option>
+		<option data-choice='two-handed' value='1.5'>{{localize 'PF1.WeaponHoldTypeTwoHanded'}}</option>
+	</datalist>
+
+	<!-- Class Custom HD -->
+	<datalist id='lil-class-hd'>
+		<option data-choice='three-quarters-offset' value='ceil((@item.level + 1) * 0.75)'>{{localize 'LittleHelper.DataSources.ThreeQuartersOffset'}}</option>
+		<option data-choice='three-quarters' value='ceil(@item.level * 0.75)'>{{localize 'LittleHelper.DataSources.ThreeQuarters'}}</option>
+	</datalist>
+</div>

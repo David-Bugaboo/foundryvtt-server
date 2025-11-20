@@ -1,0 +1,20 @@
+<form autocomplete='off'>
+	{{#if failed}}
+	<p class='resync-error'>Failed to retrieve & transform source document.</p>
+	<p class='error-message'>{{error}}</p>
+	{{else if diff}} 
+		{{#if empty}}
+		<p class='sync-notification'>Source data synchronization would not alter this item.</p>
+		{{else}}
+		<h2>Data to be written:</h2>
+		<textarea class='sync-preview' readonly='true'>{{~diff~}}</textarea>
+		<p>Synchronization overwrites data, it does not remove excess data (outside of deletions due to Foundry's handling of arrays).</p>
+		<p>This can NOT be undone.</p>
+		<div class='buttons'>
+			<button type='button' class='commit'>Commit</button>
+		</div>
+		{{/if}}
+	{{else}}
+	<p class='resync-pull'>Fetching source data...</p>
+	{{/if}}
+</form>

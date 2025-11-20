@@ -1,0 +1,80 @@
+# Pathfinder 1e NPC Loot Sheet
+
+This module adds an additional NPC sheet which can be used for loot containers such as chests. It also allows spells to be automatically converted into spell scrolls by dragging them onto this sheet.
+
+This version was forked from AlmightyGir's module (https://github.com/Almightygir/fvtt-loot-sheet-npc-pf1/), which was forked from Sven Werlen's module (https://github.com/SvenWerlen/fvtt-loot-sheet-npc-pf1), which was a port of Jan Ole Peek's module (https://github.com/jopeek/fvtt-loot-sheet-npc-5e) to the PF1 game system.
+This fork will be maintained separately and specifically for Pathfinder 1.
+
+### Features
+
+Allows for easy assembly of items and coins to be distributed to players.
+
+More features detailed below.
+
+#### Features for GM
+
+##### Loot Sheet
+
+- Prepare a loot by dragging items from compendiums
+- Alternatively, you can convert a dead token into a lootable sheet by changing the sheet to `PF1.LootSheetPF1NPC`
+
+![Demo Loot Sheet](doc/img/add-items-loot.gif)
+
+##### Create Spell Scrolls
+
+- Dragging of spells into the sheet will automatically turn them into scrolls.
+
+![Demo crate scrolls](doc/img/scroll.gif)
+
+##### Permissions & split money
+
+- Permissions can be set in the sheet for each player and range from no access (cannot open sheet) to limited (view sheet and contents) to observer (view sheet and add/remove items).
+- Any coins in the sheet can easily be split evenly across all players with observer access. The math and distribution is done for you via a single click if you're the GM.
+
+![Demo Permissions & Split](doc/img/split.gif)
+
+#### Shopkeeper Sheet
+
+- Can be used to create an inventory of a shopkeeper to allow players to peruse their inventory. Prices are listed next to each item.
+- Use rolltables to automatically fill shopkeeper inventory
+
+![Demo merchant](doc/img/merchant.gif)
+
+#### Feature for PC
+
+##### Loot items and money
+
+- A PC with observer permissions can loot money and items from the sheet
+
+![Demo Loot items and money](doc/img/loot.gif)
+
+##### Buy/sell items at shopkeeper
+
+- A PC can buy items from a shopkeeper
+- A PC can sell items (half-price) to a shopkeeper
+
+![Demo Buy and Sell items](doc/img/give.gif)
+
+##### Give items to another PC
+
+- A PC can give an item to another PC by dragging it on the actor
+
+![Demo Give items](doc/img/give.gif)
+
+### Compatibility:
+
+- Tested with FVTT v12 and PF1E v11
+
+### Installation Instructions
+
+To install a module, follow these instructions:
+
+1. Start FVTT and browse to the Game Modules tab in the Configuration and Setup menu.
+2. Head to the latest release and grab the link to the latest `module.json`, the latest release can be found here: https://gitlab.com/Tryss_Farron/pf1-lootsheet-npc/-/releases/permalink/latest
+3. Select the Install Module button and paste the link to the `module.json` file.
+4. Click Install and wait for installation to complete.
+5. Once installed, you can get the latest updates directly in foundry with the Update button.
+
+### Feedback
+
+If you have any suggestions or feedback, please contact me on Discord (fairstrides).

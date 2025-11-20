@@ -1,0 +1,107 @@
+/* css/turn-announcer.css */
+.chat-message[data-message-id].koboldworks.turn-announcer {
+  border: none;
+}
+
+.chat-message[data-message-id].koboldworks.turn-announcer .text {
+  flex: 4 0 4em;
+  margin-left: 3px;
+}
+
+.chat-message[data-message-id].koboldworks.turn-announcer .round-icon {
+  font-size: var(--font-size-16);
+}
+
+.chat-message[data-message-id].koboldworks.turn-announcer .portrait {
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+}
+
+.chat-message[data-message-id].koboldworks.turn-announcer h2.actor {
+  margin-bottom: 3px;
+  font-size: 1.2em;
+}
+
+.chat-message[data-message-id].koboldworks.turn-announcer .player {
+  margin: 0;
+}
+
+.chat-message[data-message-id].koboldworks.turn-announcer.whisper {
+  background-color: #863b3b;
+  border-color: #d2982d;
+}
+
+.chat-message[data-message-id].koboldworks.turn-announcer .message-delete {
+  flex: 0;
+  margin-right: 1px;
+}
+
+.chat-message[data-message-id].koboldworks.turn-announcer.obfuscated {
+  background: #c7baba;
+}
+
+.chat-message[data-message-id].koboldworks.turn-announcer.compact > .message-header {
+  display: none;
+}
+
+.chat-message[data-message-id].koboldworks.missed-turn-announcer {
+  display: block;
+  background: unset;
+  white-space: nowrap;
+  --outline-1: black;
+  --outline-2: orange;
+  --outline-3: yellow;
+  background-color: #9a1818;
+  border-color: orange;
+  flex-direction: row;
+  flex: 5 .5 8em;
+  padding: 3px 5px;
+  line-height: 1em;
+}
+
+.chat-message[data-message-id].koboldworks.missed-turn-announcer .message-metadata {
+  text-shadow: var(--outline-2) -1px -1px 0, var(--outline-2) 1px -1px 0, var(--outline-2) -1px 1px 0, var(--outline-2) 1px 1px 0;
+  flex: 0;
+}
+
+.chat-message[data-message-id].koboldworks.missed-turn-announcer header {
+  flex-flow: row;
+  gap: 3px;
+}
+
+.chat-message[data-message-id].koboldworks.missed-turn-announcer header > .missed-token {
+  text-shadow: var(--outline-1) -1px -1px 0, var(--outline-1) 1px -1px 0, var(--outline-1) -1px 1px 0, var(--outline-1) 1px 1px 0;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+  display: flex nowrap;
+  align-self:  center;
+  gap: 3px;
+  font-size: 12px;
+}
+
+.chat-message[data-message-id].koboldworks.missed-turn-announcer header > .missed-token > .missed-turn-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 0;
+}
+
+.chat-message[data-message-id].koboldworks.round-cycling .message-header {
+  line-height: unset;
+  align-items:  center;
+}
+
+.chat-message[data-message-id].koboldworks.round-cycling h3.round-message {
+  color: #000;
+  border: unset;
+  font-size: var(--font-size-20);
+  align-items:  center;
+  gap: 0 .3rem;
+  margin: 0;
+}
+
+.chat-message[data-message-id].koboldworks.round-cycling .message-metadata {
+  white-space: nowrap;
+  flex: 0;
+}

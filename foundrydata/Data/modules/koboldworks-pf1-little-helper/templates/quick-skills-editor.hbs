@@ -1,0 +1,75 @@
+<section>
+	{{#if user}}
+	<div class='threshold'>
+		<fieldset class='auto-select'>
+			<legend>{{localize 'LittleHelper.QuickSkills.AutoSelection'}}</legend>
+			<div class='slider min-rank align-center'>
+				<label>{{localize 'LittleHelper.QuickSkills.MinRank'}}</label>
+				<input type='number' min='0' step='1' max='40' data-dtype='Number' value='{{minRank}}' name='minRank'>
+			</div>
+			<div class='slider align-center'>
+				<label>{{localize 'LittleHelper.QuickSkills.Percentage'}}</label>
+				<input type='range' min='0' max='1' step='0.01' data-dtype='Number' value='{{threshold}}' name='threshold'>
+				<span class='percentage'>{{thresholdPct}}%</span>
+			</div>
+			<p class='hint'>{{localize 'LittleHelper.QuickSkills.AutoSelectHint'}}</p>
+			<div class='slider-config'>
+				<label class='checkbox align-center usemod-toggle'>
+					<input type='checkbox' name='useMod' data-dtype='Boolean' {{checked useMod}}>
+					<span>{{{localize 'LittleHelper.QuickSkills.UseMaxMod' maxMod=labels.maxMod maxRank=labels.maxRank}}}</span>
+				</label>
+			</div>
+		</fieldset>
+	</div>
+
+	<div class='settings'>
+		<label class='checkbox' data-tooltip='For simpler view for configuring auto-selection.<br>Affects only this dialog.' data-tooltip-direction='UP'>
+			<input type='checkbox' class='hide-unselected'>
+			<span>{{localize 'LittleHelper.QuickSkills.OnlyAutoSelected'}}</span>
+		</label>
+	</div>
+	{{/if}}
+
+	<ul class='skill-list{{#if @root.user}} actor{{/if}}'>
+		<li class='skill-list-header'>
+			<label>{{localize 'PF1.Skill'}}</label>
+			{{#if @root.user}}
+			<span class='skill-rank' data-tooltip='Skill Rank' data-tooltip-direction='UP'>{{localize 'PF1.Rank'}}</span>
+			<span class='skill-mod' data-tooltip='Total Modifier' data-tooltip-direction='UP'>{{localize 'LittleHelper.QuickSkills.Mod'}}</span>
+			<span class='default' data-tooltip='Default' data-tooltip-direction='UP'>{{localize 'LittleHelper.QuickSkills.Default'}}</span>
+			{{/if}}
+		</li>
+
+		{{#each skills}}
+		<li data-skill-id='{{id}}' data-skill='{{parentId}}' {{#if subId}}data-sub-skill='{{subId}}'{{/if}}
+			class='skill align-center {{#if default}}default{{/if}}' data-rank='{{rank}}' data-mod='{{mod}}'>
+			<label class='checkbox'>
+				<input type='checkbox' data-dtype='Boolean' name='skill.{{id}}' {{checked selected}}>
+				<span class='skill-name'>{{name}}</span>
+			</label>
+			{{#if @root.user}}
+			<span class='skill-rank'>{{rank}}</span>
+			<span class='skill-mod'>{{mod}}</span>
+			<span class='default' data-tooltip='Enabled by default if not configured.' data-tooltip-direction='UP'>
+				{{#if default}}<i class='{{@root.icons.star}}'></i>{{/if}}
+			</span>
+			{{/if}}
+		</li>
+		{{/each}}
+	</ul>
+	{{#if user}}
+	<p class='hint'>{{{localize 'LittleHelper.QuickSkills.HelpText'}}}</p>
+	{{/if}}
+	<hr>
+
+	<div class='buttons flexrow'>
+		<button type='submit' data-action='save'>
+			<i class="{{@root.icons.save}}"></i>
+			{{localize 'Save'}}
+		</button>
+		<button type='reset' data-action='reset'>
+			<i class="{{@root.icons.reset}}"></i>
+			{{localize 'Reset'}}
+		</button>
+	</div>
+</section>
