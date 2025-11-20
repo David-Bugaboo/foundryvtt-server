@@ -1,5 +1,5 @@
 {
-  "dataPath": "/run/media/bretwulf/SSD/foundrydata",
+  "dataPath": "/home/bretwulf/foundryvtt-server/foundrydata",
   "compressStatic": true,
   "fullscreen": false,
   "hostname": null,
